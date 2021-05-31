@@ -1,5 +1,5 @@
 function drawImageFromPix(segmentsPix,xLimPix,yLimPix,Z_i)
-% Copyright 2018 - 2020 The MathWorks, Inc.
+% Copyright 2018 - 2021 The MathWorks, Inc.
 
 nSegments = length(segmentsPix);
 
@@ -7,7 +7,7 @@ nSegments = length(segmentsPix);
 load WhiteboardLimits.mat xLim yLim
 
 % Convert pixel coordinates to physical distances and then to encoder counts
-fraction = 0.7;
+fraction = 1;
 segmentsMeters = transformPixelsToMeters(segmentsPix,xLim,yLim,xLimPix,yLimPix,fraction);
 
 % Reduce size of each segment
@@ -16,7 +16,11 @@ for ii = 1:length(segmentsMeters)
     segmentsMeters{ii} = reduceSegment(segmentsMeters{ii},radius);
 end
 
+% Optimize drawing path
 load RobotGeometry.mat Base
+[initX, initY] = getRobotPosition(Z_i, Base);
+segmentsMeters = routeOptimization(segmentsMeters, [initX initY]);
+
 segmentsTheta = cell(size(segmentsMeters));
 for ii = 1:nSegments
     segmentsTheta{ii} = xyToRadians(segmentsMeters{ii},Z_i,Base);
