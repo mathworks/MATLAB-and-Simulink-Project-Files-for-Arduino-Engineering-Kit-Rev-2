@@ -9,4 +9,4 @@ This package includes the MATLAB and Simulink files used to program the three pr
 These files along with the associated online learning materials included with the Rev 2 kit guide users through the process of programming each project, teaching important engineering concepts along the way in areas such as controls, system modeling, image processing, and robotics.
 
 Learn more about the Arduino Engineering Kit at: https://www.mathworks.com/campaigns/products/arduino-kit.html  <br /> 
-The official link for Arduino Engineering Kit Rev 2: https://store.arduino.cc/usa/engineering-kit-r2
+The official link for Arduino Engineering Kit Rev 2: https://store-usa.arduino.cc/
